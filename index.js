@@ -71,10 +71,8 @@ server.get('/students', function (req, res, next) {
 
         studentsSave.update(newStudent, function (error, student) {
           
-              // If there are any errors, pass them to next in the correct format
               if (error) return next(new restify.InvalidArgumentError(JSON.stringify(error.errors)))
           
-              // Send a 200 OK response
               res.send(200)
             })
           })
@@ -84,11 +82,19 @@ server.get('/students', function (req, res, next) {
             
               studentsSave.delete(req.params.id, function (error, student) {
             
-                // If there are any errors, pass them to next in the correct format
                 if (error) return next(new restify.InvalidArgumentError(JSON.stringify(error.errors)))
             
-                // Send a 200 OK response
                 res.send()
               })
             })
+
+            server.del('/students', function (req, res, next) {
+              
+                studentsSave.delete(studentsSave, function (error, students) {
+              
+                  if (error) return next(new restify.InvalidArgumentError(JSON.stringify(error.errors)))
+              
+                  res.send()
+                })
+              })
             
