@@ -1,6 +1,6 @@
 {
   "name": "assignment01",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "First Assignment",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/mansigupta29/MAPD713_Assignment01.git"
   },
+  "dependencies": {
+    "restify": "4.1.1",
+    "save": "2.3.0"
+},
   "author": "Mansi Gupta",
   "license": "ISC",
   "bugs": {
