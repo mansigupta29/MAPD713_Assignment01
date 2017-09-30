@@ -1,6 +1,6 @@
 {
   "name": "assignment01",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "First Assignment",
   "main": "index.js",
   "scripts": {
