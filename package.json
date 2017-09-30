@@ -1,0 +1,19 @@
+{
+  "name": "assignment01",
+  "version": "1.0.0",
+  "description": "First Assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt validate --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mansigupta29/MAPD713_Assignment01.git"
+  },
+  "author": "Mansi Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mansigupta29/MAPD713_Assignment01/issues"
+  },
+  "homepage": "https://github.com/mansigupta29/MAPD713_Assignment01#readme"
+}
