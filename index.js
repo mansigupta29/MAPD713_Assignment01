@@ -1,7 +1,9 @@
 var SERVER_NAME = 'students-api'
 var PORT = 8000;
 var HOST = '127.0.0.1';
-
+var getCounter = 0;
+var getCounterById = 0;
+var postCounter =0;
 
 var restify = require('restify')
   , studentsSave = require('save')('students')
@@ -9,18 +11,25 @@ var restify = require('restify')
 
   server.listen(PORT, HOST, function () {
   console.log('Server %s listening at %s', server.name, server.url)
+  console.log('Endpoints')
+  console.log('%s/students',server.url)
+  console.log('%s/students/id',server.url)
 })
 
 server .use(restify.fullResponse()).use(restify.bodyParser())
 
 
 server.get('/students', function (req, res, next) {
+  getCounter++;
+  console.log('Get Count : '+getCounter)
     studentsSave.find({}, function (error, students) {
       res.send(students)
     })
   })
 
   server.get('/students/:id', function (req, res, next) {
+    getCounterById++;
+    console.log('Get Count by ID : '+getCounterById)
     studentsSave.findOne({ _id: req.params.id }, function (error, student) {
         if (error) return next(new restify.InvalidArgumentError(JSON.stringify(error.errors)))
     
@@ -33,7 +42,8 @@ server.get('/students', function (req, res, next) {
     })
 
     server.post('students', function(req, res, next){
-
+      postCounter++;
+      console.log('Post Count : '+postCounter)
       if (req.params.name === undefined) {
         return next(new restify.InvalidArgumentError('Name Required!!'))
       }
@@ -87,14 +97,4 @@ server.get('/students', function (req, res, next) {
                 res.send()
               })
             })
-
-            server.del('/students', function (req, res, next) {
-              
-                studentsSave.delete(studentsSave, function (error, students) {
-              
-                  if (error) return next(new restify.InvalidArgumentError(JSON.stringify(error.errors)))
-              
-                  res.send()
-                })
-              })
             
